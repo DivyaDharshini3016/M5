@@ -146,36 +146,40 @@ Write C program for the below pyramid string pattern. Enter a string: PROGRAM En
 
 int main() {
     char str[100];
-    int rows;
-
-    printf("Enter a string: ");
-    scanf("%s", str);
-
-    printf("Enter number of rows: ");
-    scanf("%d", &rows);
+    scanf("%s", str);  // Input string
 
     int len = strlen(str);
-    int k = 0;  
+    int sp = 10;       // Initial number of spaces (controls pyramid centering)
+    int k = 0;         // Index for string characters
+    int y = 0;
 
-    for (int i = 1; i <= rows; i++) {
-       
-        for (int space = 1; space <= rows - i; space++) {
+    for (int i = 1; i <= len; i++) {
+        // Print leading spaces
+        for (int space = 1; space <= sp; space++) {
             printf(" ");
         }
 
-        for (int j = 1; j <= i; j++) {
-            printf("%c ", str[k]);
-            k = (k + 1) % len;  
+        // Print characters from the string
+        for (int j = 0; j <= y; j++) {
+            printf("%c", str[k]);
+            k++;
+            if (str[k] == '\0') {
+                k = 0;  // Reset to start of string if end is reached
+            }
         }
 
         printf("\n");
+        sp--;     // Reduce space for next row (move left)
+        y += 2;   // Increase character count for next row (odd numbers)
     }
 
     return 0;
 }
 ```
  ## OUTPUT
-![Screenshot 2025-06-02 112739](https://github.com/user-attachments/assets/12d33ec4-a10a-4486-92f7-cc9db450e066)
+ 
+![Screenshot 2025-06-02 144444](https://github.com/user-attachments/assets/9d500bed-3d4b-4cba-897b-fcb20f3b8684)
+
 
 ## RESULT
 Thus the C program to String process executed successfully
